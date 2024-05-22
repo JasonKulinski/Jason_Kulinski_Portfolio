@@ -1,13 +1,13 @@
 <template>
-  <div class="home-comp">
-
-
-      <h3 Content >
-      </h3>
-
-
+  <div class="AboutComp">
+    <NavBar />
+    <h3> Hello World I am Content </h3>
   </div>
 </template>
+
+<script setup>
+import NavBar from '../NavBar.vue'; 
+</script>
 
 <script scoped>
 export default {

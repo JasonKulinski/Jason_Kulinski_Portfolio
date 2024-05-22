@@ -1,17 +1,17 @@
 <template>
-  <div class="home-comp">
-
-
-      <h3 About />
-      <h3/>
-
-
+  <div class="AboutComp">
+    <NavBar />
+    <h3> Hello World I am text </h3>
   </div>
 </template>
 
-<script scoped>
+<script setup>
+import NavBar from '../NavBar.vue'; 
+</script>
+
+<script>
 export default {
-  name: 'HomeComp',
+  name: 'AboutComp',
   props: {
     msg: String
   }
@@ -20,9 +20,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-
-
 h3 {
   margin: 40px 0 0;
 }
