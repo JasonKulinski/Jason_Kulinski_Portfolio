@@ -2,8 +2,8 @@
   <nav class="navbar">
     <ul class="nav-links">
       <li><router-link to="/" class="nav-item">Home</router-link></li>
+      <li><router-link to="/projects" class="nav-item">Projects</router-link></li>
       <li><router-link to="/about" class="nav-item">About</router-link></li>
-      <li><router-link to="/content" class="nav-item">Content</router-link></li>
     </ul>
   </nav>
 </template>
