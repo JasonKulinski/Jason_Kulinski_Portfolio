@@ -2,38 +2,24 @@
   <div class="ProjectComp">
     <NavBar />
 
-    <div class="ProjectInfoDisplayOdd">
-      <h1>OrbTak Mission Planner</h1>
-      <div class="meter">
-        <span style="width: 100%"></span>
-      </div>
-      <img src="Completed.png" class="stamp">
+    <ProjectSection 
+      :title="'OrbTak Mission Planner'"
+      :sections="orbTakSections" 
+      :meterWidth="'100%'" 
+      :meterColor="'#2BC253'"
+      :stampSrc="'Completed.png'"
+      class="ProjectInfoDisplayOdd" 
+    />
 
-      <transition name="fade" mode="out-in">
-        <div v-if="sections[currentIndex]" :key="currentIndex" class="section active">
-          <button @click="prevSection" class="prev">
-            <img src="/LeftButton.png" alt="Previous">
-          </button>
+    <ProjectSection 
+      :title="'GreenDex'"
+      :sections="greenDexSections" 
+      :meterWidth="'30%'" 
+      :meterColor="'#FF5500'"
+      :stampSrc="'InProgress.png'" 
+      class="ProjectInfoDisplayEven"
+    />
 
-          <div class="content">
-            <img :src="sections[currentIndex].imgSrc" :alt="sections[currentIndex].title" class="project-image">
-            <div class="description">
-              <h2>{{ sections[currentIndex].title }}</h2>
-              <p>{{ sections[currentIndex].description }}</p>
-            </div>
-          </div>
-
-          <button @click="nextSection" class="next">
-            <img src="/RightButton.png" alt="Next">
-          </button>
-        </div>
-      </transition>
-    </div>
-
-    <div class="ProjectInfoDisplayEven">
-      <h1>GreenDex</h1>
-
-    </div>
 
     <div class="ProjectInfoDisplayOdd">
       <h1>Rare Sticks</h1>
@@ -48,21 +34,29 @@
 <script setup>
 import { ref } from 'vue';
 import NavBar from '../NavBar.vue';
+import ProjectSection from './ProjectSection.vue';
 
-const currentIndex = ref(0);
-const sections = ref([
+const orbTakSections = ref([
   { title: 'Project Description', imgSrc: '/OrbTakMissionPlanner1.png', description: 'The OrbTak Mission Planner was my senior year capstone project. The project introduced me to the SDLC, Agile and Waterfall workflows, a variaty of management styles, and how to keep up with bi-weekly sprints.' },
   { title: 'Tools & Features', imgSrc: '/OrbTakMissionPlanner2.png', description: 'The project utilized existing frameworks such as Vue.js, Cesium, and Firebase. With these tools combined our small team of five developers was able to create numerous key features that brought the mission planner to life such as: Global Mapping, Creating and storing new flight information, Implementing Role Based Action control, and more.' }
 ]);
 
-const nextSection = () => {
-  currentIndex.value = (currentIndex.value + 1) % sections.value.length;
-};
+const greenDexSections = ref([
+  { title: 'How it Started', imgSrc: '/GreenDex1.jpg', description: 'GreenDex started off at as an idea in Hack4Delta, a new hackathon in New HartfordConneticit. The theme of the hackathon was sustainability so our Co-Founder Lucas Bent came up with an early idea of GreenDex called Basket. The idea was to create a shopping utility that allowed for at a glance information on companies sustainability practices via a lettered grading system. ' },
+  { title: 'Where it went', imgSrc: '/GreenDex2.png', description: 'Over the course of the school year we all worked hard on prototyping the product. Our development approach was to fail fast, and fail cheap since our access to resources was limited. Several iterations of the app were developed on Jira, and what you see on the left is our current application utilziing React and Ionic. Our early stages for catagorizing companies had been souly based off of carbon emissions, but we plan to expand our technology to look into current and historic news, supply chain efficiency, and general CSR practices through web scraping. ' },
+  { title: 'Where it will go', imgSrc: '/GreenDex3.jpg', description: 'In the next three months our small team plans to launch GreenDex in a MVP state. I am lucky to have gone through the Innovate for Maine program, becasue they have given me the skills necessary to bring these kinds of exciting innovations to life. The bootcamp sparked my go getter attitude, and helped me realize that anything is possible with the right team and the right mindset' },
 
-const prevSection = () => {
-  currentIndex.value = (currentIndex.value - 1 + sections.value.length) % sections.value.length;
-};
+]);
+
+// const rareSticksSections = ref([
+//   // Add sections for Rare Sticks
+// ]);
+
+// const pokerGameSections = ref([
+//   // Add sections for Poker Game
+// ]);
 </script>
+
 
 <script scoped>
 export default {
@@ -83,7 +77,7 @@ h1, h2 {
   text-shadow: 2px 0px 3px #000;
 }
 h1 {
-  color: #FFA500;
+  color: white;
   text-shadow: 2px 0px 3px #000;
   font-size: 2.8em;
 }
@@ -113,14 +107,14 @@ a {
 .ProjectInfoDisplayOdd, .ProjectInfoDisplayEven {
   width: auto;
   height: 55vh;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.7), rgba(225, 225, 225, 0.9)), 
+  background: linear-gradient(to left, rgba(225, 225, 225, 0.7), rgba(225, 225, 225, 0.9)), 
               url('@/assets/backgroundTexture.png') no-repeat center center;
   background-size: cover;
   z-index: 2;
   overflow: hidden;
 }
 .ProjectInfoDisplayEven {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(25, 25, 25, 0.9)), 
+  background: linear-gradient(to right, rgba(155, 155, 155, 0.9), rgba(225, 225, 225, 0.7)), 
               url('@/assets/backgroundTexture.png') no-repeat center center;
     background-size: cover;
 
